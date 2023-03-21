@@ -24,7 +24,7 @@ def send_welcome(message):
 
     if not is_subscribed(CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
-        bot.send_message(message.chat.id, 'Please subscribe to the channel '{CHAT_ID}'')
+        bot.send_message(message.chat.id, 'Please subscribe to the channel ', CHAT_ID)
     else:
         bot.send_message(message.chat.id, 'You are subscribed')
         bot.send_message(message.chat.id, 'start msg', reply_markup=keyboard)
