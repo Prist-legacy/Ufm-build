@@ -1,4 +1,5 @@
-import telebot
+from telebot import*
+from telebot.types import*
 from telebot.apihelper import ApiTelegramException
 
 bot = telebot.TeleBot("6262080069:AAF1Fs94pvefypcLcdgyueZx4qUNy8mvDtw")
@@ -21,6 +22,12 @@ def is_subscribed(chat_id, user_id):
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
+        button1 = types.InlineKeyboardButton('JOIN CHANNEL', callback_data='foo')
+        keyboard = types.InlineKeyboardMarkup()
+
+        keyboard.add(button1)
+
+
 
     if not is_subscribed(CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
