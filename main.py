@@ -3,7 +3,7 @@ from telebot.apihelper import ApiTelegramException
 
 bot = telebot.TeleBot("6262080069:AAF1Fs94pvefypcLcdgyueZx4qUNy8mvDtw")
 
-CHAT_ID = '@ufmmatches' #replace your channel id
+CHAT_ID = '1572301695' #replace your channel id
 
 def is_subscribed(chat_id, user_id):
     try:
