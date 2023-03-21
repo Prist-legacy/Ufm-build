@@ -18,15 +18,21 @@ def is_subscribed(chat_id, user_id):
         if e.result_json['description'] == 'Bad Request: chat not found':
             return False
 
+def gen_markup():
 
+    markup = InlineKeyboardMarkup()
+
+    markup.row_width = 2
+
+    markup.add(InlineKeyboardButton("Yes", callback_data="cb_yes"),
+
+                               InlineKeyboardButton("No", callback_data="cb_no"))
+
+    return markup
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-        button1 = types.InlineKeyboardButton('JOIN CHANNEL', callback_data='foo')
-        keyboard = types.InlineKeyboardMarkup()
-
-        keyboard.add(button1)
-
+        
 
 
     if not is_subscribed(CHAT_ID,message.chat.id):
@@ -34,7 +40,7 @@ def send_welcome(message):
         bot.send_message(message.chat.id, 'Please subscribe to the channel @pristbank')
     else:
         bot.send_message(message.chat.id, 'You are subscribed')
-        bot.send_message(message.chat.id, 'start msg', reply_markup=keyboard)
+        bot.send_message(message.chat.id, 'start msg', reply_markup=gen_markup())
 
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
