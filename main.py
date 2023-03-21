@@ -26,7 +26,7 @@ def gen_markup():
 
     markup.add(InlineKeyboardButton("Yes", callback_data="cb_yes"),
 
-                               InlineKeyboardButton("No", callback_data="cb_no"))
+    InlineKeyboardButton("No", callback_data="cb_no"))
 
     return markup
 
