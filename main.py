@@ -1,7 +1,6 @@
 from telebot import*
 from telebot.types import*
 from telebot.apihelper import ApiTelegramException
-from helpers import*
 
 
 bot = telebot.TeleBot("5906860486:AAF9_DU9F_6Xk9tQq7rvls26HgJMzHyJJpY")
