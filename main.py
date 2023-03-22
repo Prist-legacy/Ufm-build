@@ -10,6 +10,7 @@ startmsg = 'start msg'
 not_sub_msg = """Please subscribe to our main channel to use this BOT."""
 sub_msg = 'You are subscribed'
 helpmsg = 'help msg'
+adminmsg='CONTACT ADMIN HERE'
 
 def is_subscribed(chat_id, user_id):
     try:
@@ -44,11 +45,11 @@ def help_btn():
                InlineKeyboardButton("CONTINUE", callback_data="vip-menu"))
     return markup
 
-def help_btn():
+def admin_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("MAIN MENU", callback_data="menu"),
-               InlineKeyboardButton("CONTINUE", callback_data="vip-menu"))
+    markup.add(InlineKeyboardButton("ADMIN", url="@pristlegacy"),
+               InlineKeyboardButton("BACK", callback_data="menu"))
     return markup
 
 def help_btn():
@@ -87,6 +88,13 @@ def callback_data(call):
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=startmsg, reply_markup=start_btn())
+        elif call.data == "admin":
+
+            bot.edit_message_text(chat_id=call.message.chat.id,
+
+                                  message_id=call.message.message_id,
+
+                                  text=adminmsg, reply_markup=admin_btn())
             
 
 #COMMANDS
@@ -114,6 +122,20 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text=sub_msg)
         bot.send_message(message.chat.id, text=helpmsg, reply_markup=help_btn())
 
+@bot.message_handler(commands=['admin'])
+def send_welcome(message):
+    
+    if not is_subscribed(CHAT_ID,message.chat.id):
+        # user is not subscribed. send message to the user
+        bot.send_message(message.chat.id, text=not_sub_msg
+                         , reply_markup=sub())
+        else:
+
+
+
+        bot.send_message(message.chat.id, text=adminmsg, reply_markup=admin_btn())
+        
+        
 print('BOT IS STARTED SUCCESSFULLY')
 
 
