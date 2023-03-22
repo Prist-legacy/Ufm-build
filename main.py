@@ -2,9 +2,14 @@ from telebot import*
 from telebot.types import*
 from telebot.apihelper import ApiTelegramException
 
-bot = telebot.TeleBot("6262080069:AAF1Fs94pvefypcLcdgyueZx4qUNy8mvDtw")
+
+bot = telebot.TeleBot("5906860486:AAF9_DU9F_6Xk9tQq7rvls26HgJMzHyJJpY")
 
 CHAT_ID = '@pristbank' #replace your channel id
+startmsg = 'start msg'
+not_sub_msg = """Please subscribe to our main channel to use this BOT."""
+sub_msg = 'You are subscribed'
+helpmsg = 'help msg'
 
 def is_subscribed(chat_id, user_id):
     try:
@@ -18,37 +23,100 @@ def is_subscribed(chat_id, user_id):
         if e.result_json['description'] == 'Bad Request: chat not found':
             return False
 
-def gen_markup():
-
+#BUTTONS
+def sub():
     markup = InlineKeyboardMarkup()
-
     markup.row_width = 2
-
-    markup.add(InlineKeyboardButton("Yes", callback_data="cb_yes"),
-
-    InlineKeyboardButton("No", callback_data="cb_no"))
-
+    markup.add(InlineKeyboardButton("JOIN CHANNEL", url="https://t.me/pristbank"))
     return markup
 
+def start_btn():
+    markup = InlineKeyboardMarkup()
+    markup.row_width = 2
+    markup.add(InlineKeyboardButton("FREE TIPS", callback_data="free"),
+               InlineKeyboardButton("VIP MATCHES", callback_data="vip-menu"))
+    return markup
+
+def help_btn():
+    markup = InlineKeyboardMarkup()
+    markup.row_width = 2
+    markup.add(InlineKeyboardButton("MAIN MENU", callback_data="menu"),
+               InlineKeyboardButton("CONTINUE", callback_data="vip-menu"))
+    return markup
+
+def help_btn():
+    markup = InlineKeyboardMarkup()
+    markup.row_width = 2
+    markup.add(InlineKeyboardButton("MAIN MENU", callback_data="menu"),
+               InlineKeyboardButton("CONTINUE", callback_data="vip-menu"))
+    return markup
+
+def help_btn():
+    markup = InlineKeyboardMarkup()
+    markup.row_width = 2
+    markup.add(InlineKeyboardButton("MAIN MENU", callback_data="menu"),
+               InlineKeyboardButton("CONTINUE", callback_data="vip-menu"))
+    return markup
+
+def help_btn():
+    markup = InlineKeyboardMarkup()
+    markup.row_width = 2
+    markup.add(InlineKeyboardButton("MAIN MENU", callback_data="menu"),
+               InlineKeyboardButton("CONTINUE", callback_data="vip-menu"))
+    return markup
+
+def vipmenu():
+    markup = InlineKeyboardMarkup()
+    markup.row_width = 2
+    markup.add(InlineKeyboardButton("MAIN MENU", callback_data="menu"))
+    return markup
+
+#CALLBACK
+@bot.callback_query_handler(func=lambda call: True)
+def callback_data(call):
+    if call.message:
+        if call.data == "free":
+            bot.edit_message_text(chat_id=call.message.chat.id,
+                                  message_id=call.message.message_id,
+                                  text="FREE MATCHES MENU")
+        elif call.data == "vip-menu":
+            bot.edit_message_text(chat_id=call.message.chat.id,
+                                  message_id=call.message.message_id,
+                                  text="VIP MATCHES MENU", reply_markup=vipmenu())
+        elif call.data == "menu":
+            bot.edit_message_text(chat_id=call.message.chat.id,
+                                  message_id=call.message.message_id,
+                                  text=startmsg, reply_markup=start_btn())
+            
+
+#COMMANDS
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-        
-
-
+    
     if not is_subscribed(CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
-        bot.send_message(message.chat.id, 'Please subscribe to the channel @pristbank')
+        bot.send_message(message.chat.id, text=not_sub_msg
+                         , reply_markup=sub())
     else:
-        bot.send_message(message.chat.id, 'You are subscribed')
-        bot.send_message(message.chat.id, 'start msg', reply_markup=gen_markup())
+        bot.send_message(message.chat.id, text=sub_msg)
+        bot.send_message(message.chat.id, text=startmsg, reply_markup=start_btn())
 
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
+    not_sub_msg = """Please subscribe to our main channel to use this BOT."""
+    sub_msg = 'You are subscribed'
 
     if not is_subscribed(CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
-        bot.send_message(message.chat.id, 'Please subscribe to the channel')
+        bot.send_message(message.chat.id, text=not_sub_msg
+                         , reply_markup=sub())
     else:
-        bot.send_message(message.chat.id, 'help msg')
+        bot.send_message(message.chat.id, text=sub_msg)
+        bot.send_message(message.chat.id, text=helpmsg, reply_markup=help_btn())
+
+print('BOT IS STARTED SUCCESSFULLY')
+
+
+
 
 bot.polling()
