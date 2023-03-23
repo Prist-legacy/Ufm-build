@@ -8,25 +8,37 @@ bot = telebot.TeleBot("5906860486:AAF9_DU9F_6Xk9tQq7rvls26HgJMzHyJJpY")
 CHAT_ID = '@pristbank' #replace your channel id
 admin = 'https://t.mepristlegacy'
 startmsg = """
-Hey {}
-Thanks for using {}
 I can help you in many things regarding to fixed games. Am smart but you can still contact the **UFM administration** for farther help.
 **So now can I know your need ?**
 Use below buttons for simplicity!
     """
-not_sub_msg = """Please subscribe to our main channel to use this BOT."""
-sub_msg = 'You are subscribed'
+not_sub_msg = """Please subscribe to our main channel to use this BOT.
+After use /reload to proceed"""
+
 helpmsg = 'help msg'
+commands = {  # command description used in the "help" command
+    'start'       : 'Start the bot again',
+    'help'        : 'Gives you information about the available services and how to use the bot',
+    'free': 'To quickly access FREE TIPS.',
+    'getImage'    : 'A test using multi-stage messages, custom keyboard, and media sending',
+    'commands'    : 'All commands available with the bot',
+    'admin'    : 'Get admin link. You can also type admin for quick access.'
+}
+
 freetips_msg = "free tips msg"
 freetips = "TODAY'S FREE TIPS"
 vip_msg = "VIP MSG"
 vipmenu_msg = "VIP MATCHES MENU"
 cs_msg = "CORRECT SCORE MSG"
 country_msg = "SUBSCRIBE MSG"
-admin_msg = "ADMIN MSG"
+admin_msg = """
+**PLEASE CONTACT**
+"""
 commands_msg = "ALL COMMANDS"
 vipdes_msg = "VIP DESCRIPTION"
 how_msg = "HOW MSG HERE"
+
+
 
 ug_msg = "PRICE {ug} ugx"
 ke_msg = "PRICE {ke} kes"
@@ -151,9 +163,10 @@ def htft_btn():
 def cs_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
+    markup.add(InlineKeyboardButton("BUY MATCHES NOW", callback_data="subscribe"))
     markup.add(InlineKeyboardButton("BACK", callback_data="vip"),
                InlineKeyboardButton("MAIN MENU", callback_data="menu"))
-    markup.add(InlineKeyboardButton("BUY MATCHES NOW", callback_data="subscribe"))
+    
     return markup
 
 #REPLY KEYBOARD FOR COUNTRIES
@@ -239,6 +252,7 @@ def vipdes_btn():
 #MODE OF PAYMENTS
 
 
+
 #CALLBACK
 @bot.callback_query_handler(func=lambda call: True)
 def callback_data(call):
@@ -258,6 +272,7 @@ def callback_data(call):
                                   text= "Updated" + freetips_msg, reply_markup=reload_btn())
        #MAIN MENU     
         elif call.data == "menu":
+     
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=startmsg, reply_markup=start_btn(), 
@@ -333,8 +348,12 @@ def send_welcome(message):
         bot.send_message(message.chat.id, text=not_sub_msg
                          , reply_markup=sub())
     else:
-        bot.send_message(message.chat.id, text=startmsg, reply_markup=start_btn(),
-                         disable_web_page_preview=True)
+        user_id = message.from_user.id
+        user_name = message.from_user.first_name
+        user_name2 = message.from_user.last_name
+        mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")" 
+        #mention = f"{user_name + user_name2}"
+        bot.send_message(message.chat.id, text=f"**HEY {mention}**" + startmsg, reply_markup=start_btn(), parse_mode = "Markdown")
 
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
@@ -345,6 +364,19 @@ def send_welcome(message):
     else:
         bot.send_message(message.chat.id, text=helpmsg, reply_markup=help_btn())
         
+@bot.message_handler(commands=['commands'])
+def send_welcome(message):
+    if not is_subscribed(CHAT_ID,message.chat.id):
+        # user is not subscribed. send message to the user
+        bot.send_message(message.chat.id, text=not_sub_msg
+                         , reply_markup=sub())
+    else:
+        cmdmsg = "The following commands are available: \n"
+        for key in commands:  # generate help text out of the commands dictionary defined at the top
+            cmdmsg += "/" + key + ": "
+            cmdmsg += commands[key] + "\n"
+        bot.send_message(message.chat.id, text=cmdmsg, reply_markup=commands_btn())
+        
 @bot.message_handler(commands=['free'])
 def send_welcome(message):
     if not is_subscribed(CHAT_ID,message.chat.id):
@@ -354,25 +386,59 @@ def send_welcome(message):
     else:
         bot.send_message(message.chat.id, text=freetips_msg, reply_markup=freetips_btn())
         
-@bot.message_handler(commands=['contact'])
+@bot.message_handler(commands=['admin'])
 def send_welcome(message):
     if not is_subscribed(CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
         bot.send_message(message.chat.id, text=not_sub_msg
                          , reply_markup=sub())
     else:
-        bot.send_message(message.chat.id, text=admin_msg, reply_markup=admin_btn())
+        #USAGES    
+        user_id = message.from_user.id    
+        user_name = message.from_user.first_name
+        user_name2 = message.from_user.last_name    
+        mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")" 
+            #END USAGES    
+        bot.send_message(message.chat.id, text=f"USER = {mention}\n" + f"ID = {user_id}\n" + admin_msg, 
+                             reply_markup=admin_btn(), 
+                             parse_mode = "Markdown", 
+                             disable_web_page_preview=True)
+        
+@bot.message_handler(func=lambda message:True)
+def send_admin(message):
+    if not is_subscribed(CHAT_ID,message.chat.id):
+        
+        
+        # user is not subscribed. send message to the user
+        bot.send_message(message.chat.id, text=not_sub_msg
+                         , reply_markup=sub())
+    else:
+        if message.text.lower() == "admin":
+            #USAGES
+            user_id = message.from_user.id
+            user_name = message.from_user.first_name
+            user_name2 = message.from_user.last_name
+            mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")" 
+            #END USAGES
+            bot.send_chat_action(message.chat.id, 'typing')  # show the bot "typing" (max. 5 secs)
+            time.sleep(3)
+            bot.send_message(message.chat.id, text=f"USER = {mention}\n" + f"ID = {user_id}\n" + admin_msg, 
+                             reply_markup=admin_btn(), 
+                             parse_mode = "Markdown", 
+                             disable_web_page_preview=True)
+            
         
 
         
-@bot.message_handler(commands=['commands'])
+@bot.message_handler(commands=['reload'])
 def send_welcome(message):
     if not is_subscribed(CHAT_ID,message.chat.id):
         # user is not subscribed. send message to the user
         bot.send_message(message.chat.id, text=not_sub_msg
                          , reply_markup=sub())
     else:
-        bot.send_message(message.chat.id, text=commands_msg, reply_markup=commands_btn())
+        bot.send_message(message.chat.id, text="Bot Reloaded")
+        bot.send_message(message.chat.id, text=startmsg, reply_markup=start_btn())
         
         
         
@@ -382,4 +448,4 @@ print('BOT IS STARTED SUCCESSFULLY')
 
 
 
-bot.polling()
+bot.infinity_polling()
