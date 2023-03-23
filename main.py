@@ -3,7 +3,7 @@ from telebot.types import*
 from telebot.apihelper import ApiTelegramException
 
 
-bot = telebot.TeleBot("5906860486:AAF9_DU9F_6Xk9tQq7rvls26HgJMzHyJJpY")
+bot = telebot.TeleBot("5854074429:AAEoEwm0-KGv4of0fT3ll6WJtzDW30-_Ugw")
 
 CHAT_ID = '@pristbank' #replace your channel id
 admin = 'https://t.mepristlegacy'
