@@ -157,14 +157,14 @@ def vip_btn():
 def htft_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("🔙", callback_data="vip"))
+    markup.add(InlineKeyboardButton("BACK 🔙", callback_data="vip"))
     return markup
 
 def cs_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
     markup.add(InlineKeyboardButton("BUY MATCHES NOW 💰", callback_data="subscribe"))
-    markup.add(InlineKeyboardButton("🔙", callback_data="vip"),
+    markup.add(InlineKeyboardButton("BACK 🔙", callback_data="vip"),
                InlineKeyboardButton("MAIN MENU 🔰", callback_data="menu"))
     
     return markup
@@ -246,7 +246,7 @@ def others_btn():
 def vipdes_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("🔙", callback_data="price"))
+    markup.add(InlineKeyboardButton("BACK 🔙", callback_data="price"))
     return markup
 
 #MODE OF PAYMENTS
