@@ -350,8 +350,8 @@ def send_welcome(message):
     else:
         user_id = message.from_user.id
         user_name = message.from_user.first_name
-        user_name2 = message.from_user.last_name
-        mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")" 
+   
+        mention = "["+user_name+"](tg://user?id="+str(user_id)+")" 
         #mention = f"{user_name + user_name2}"
         bot.send_message(message.chat.id, text=f"**HEY {mention}**" + startmsg, reply_markup=start_btn(), parse_mode = "Markdown")
 
@@ -396,8 +396,8 @@ def send_welcome(message):
         #USAGES    
         user_id = message.from_user.id    
         user_name = message.from_user.first_name
-        user_name2 = message.from_user.last_name    
-        mention = "["+user_name + user_name2+"](tg://user?id="+str(user_id)+")" 
+        
+        mention = "["+user_name+"](tg://user?id="+str(user_id)+")" 
             #END USAGES    
         bot.send_message(message.chat.id, text=f"USER = {mention}\n" + f"ID = {user_id}\n" + admin_msg, 
                              reply_markup=admin_btn(), 
