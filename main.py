@@ -40,13 +40,13 @@ how_msg = "HOW MSG HERE"
 
 
 
-ug_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} ugx "
-ke_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} kes"
-gh_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} cedi"
-rw_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} rwf"
-tz_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} tzs"
-usa_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} $"
-ng_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} ngn"
+ug_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {ug} ugx "
+ke_msg = f"VIP PRICE; {ke} ugx : VVIP PRICE; {ke} kes"
+gh_msg = f"VIP PRICE; {gh} ugx : VVIP PRICE; {gh} cedi"
+rw_msg = f"VIP PRICE; {rw} ugx : VVIP PRICE; {rw} rwf"
+tz_msg = f"VIP PRICE; {tz} ugx : VVIP PRICE; {tz} tzs"
+usa_msg = f"VIP PRICE; {usa} ugx : VVIP PRICE; {usa} $"
+ng_msg = f"VIP PRICE; {ng} ugx : VVIP PRICE; {ng} ngn"
 
 
 ug = 47000
