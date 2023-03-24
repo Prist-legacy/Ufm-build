@@ -40,13 +40,13 @@ how_msg = "HOW MSG HERE"
 
 
 
-ug_msg = "PRICE {ug} ugx"
-ke_msg = "PRICE {ke} kes"
-gh_msg = "PRICE {gh} cedi"
-rw_msg = "PRICE {rw} rwf"
-tz_msg = "PRICE {tz} tzs"
-usa_msg = "PRICE {usa} $"
-ng_msg = "PRICE {ng} ngn"
+ug_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} ugx "
+ke_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} kes"
+gh_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} cedi"
+rw_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} rwf"
+tz_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} tzs"
+usa_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} $"
+ng_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {} ngn"
 
 
 ug = 47000
@@ -237,7 +237,7 @@ def ng_btn():
 def others_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("BACK", callback_data="country"),
+    markup.add(InlineKeyboardButton("BACK 🔙", callback_data="country"),
                InlineKeyboardButton("TALK TO ADMIN", callback_data="admin"))
     markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
     return markup
