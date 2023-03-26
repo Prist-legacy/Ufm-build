@@ -40,22 +40,9 @@ how_msg = "HOW MSG HERE"
 
 
 
-ug_msg = f"VIP PRICE; {ug} ugx : VVIP PRICE; {ug} ugx "
-ke_msg = f"VIP PRICE; {ke} ugx : VVIP PRICE; {ke} kes"
-gh_msg = f"VIP PRICE; {gh} ugx : VVIP PRICE; {gh} cedi"
-rw_msg = f"VIP PRICE; {rw} ugx : VVIP PRICE; {rw} rwf"
-tz_msg = f"VIP PRICE; {tz} ugx : VVIP PRICE; {tz} tzs"
-usa_msg = f"VIP PRICE; {usa} ugx : VVIP PRICE; {usa} $"
-ng_msg = f"VIP PRICE; {ng} ugx : VVIP PRICE; {ng} ngn"
 
 
-ug = 47000
-ke = 1535
-gh = 99.3
-rw = 13370
-tz = 30492
-usa = 17.473
-ng = 6500
+
 
 
 
@@ -99,7 +86,7 @@ def help_btn():
                InlineKeyboardButton("CONTINUE ➡️", callback_data="vip-menu"))
     return markup
 
-def free_btn():
+#def free_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
     markup.add(InlineKeyboardButton("BACK 🔙", callback_data="menu"),
@@ -246,7 +233,7 @@ def others_btn():
 def vipdes_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("BACK 🔙", callback_data="price"))
+    markup.add(InlineKeyboardButton("BACK 🔙", callback_data="country"))
     return markup
 
 #MODE OF PAYMENTS
@@ -257,19 +244,22 @@ def vipdes_btn():
 @bot.callback_query_handler(func=lambda call: True)
 def callback_data(call):
     if call.message:
+        price_tag = "PRICE IS"
         #FREE TIPS
         if call.data == "free":
+            mrk = types.ReplyKeyboardMarkup(resize_keyboard=True)
+            mrk.add(types.KeyboardButton('FREE TIPS'))
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text="FREE MATCHES MENU", reply_markup=free_btn())
-        elif call.data == "today's_tips":
-            bot.edit_message_text(chat_id=call.message.chat.id,
-                                  message_id=call.message.message_id,
-                                  text=freetips_msg, reply_markup=freetips_btn())
+                                  text="FREE MATCHES MENU", reply_markup=mrk())
+        #if call.data == "today's_tips":
+            #bot.edit_message_text(chat_id=call.message.chat.id,
+                                  #message_id=call.message.message_id,
+                                  #text=freetips_msg, reply_markup=freetips_btn())
         elif call.data == "reload":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text= "Updated" + freetips_msg, reply_markup=reload_btn())
+                                  text= "Updated \n" + freetips_msg, reply_markup=reload_btn())
        #MAIN MENU     
         elif call.data == "menu":
      
@@ -305,30 +295,44 @@ def callback_data(call):
                                   text=country_msg, reply_markup=country_btn())
         #COUNTRY SECTION    
         elif call.data == "ug":
+            ug = 47000
+            ug_msg = f"VIP PRICE; {ug}ugx \n VVIP PRICE; {ug}ugx"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=ug_msg, reply_markup=ug_btn())
         elif call.data == "ke":
+            ke = 1535
+            ke_msg = f"VIP PRICE; {ke}kes \n VVIP PRICE; {ke}kes"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=ke_msg, reply_markup=ke_btn())
         elif call.data == "gh":
+            gh = 99.3
+            gh_msg = f"VIP PRICE; {gh}cedi \n VVIP PRICE; {gh}cedi"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=gh_msg, reply_markup=gh_btn())
         elif call.data == "rw":
+            rw = 13370
+            rw_msg = f"VIP PRICE; {rw}rwf \n VVIP PRICE; {rw}rwf"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=rw_msg, reply_markup=rw_btn())
         elif call.data == "tz":
+            tz = 30492
+            tz_msg = f"VIP PRICE; {tz}tzs \n VVIP PRICE; {tz}tzs"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=tz_msg, reply_markup=tz_btn())
         elif call.data == "usa":
+            usa = 17.473
+            usa_msg = f"VIP PRICE; {usa}$ \n VVIP PRICE; {usa}$"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=usa_msg, reply_markup=usa_btn())
         elif call.data == "ng":
+            ng = 6500
+            ng_msg = f"VIP PRICE; {ng}ngn \n VVIP PRICE; {ng}ngn"
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=ng_msg, reply_markup=ng_btn())
@@ -340,6 +344,18 @@ def callback_data(call):
             
 
 #COMMANDS
+@bot.message_handler(func=lambda message:True)
+def send_admin(message):
+    
+    if not is_subscribed(CHAT_ID,message.chat.id):
+        # user is not subscribed. send message to the user
+        bot.send_message(message.chat.id, text=not_sub_msg
+                         , reply_markup=sub())
+    else:
+        if message.text.lower() == "today's tips":
+            bot.send_message(message.chat.id, text=freetips_msg, reply_markup=freetips_btn() 
+                              )
+
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     
@@ -426,10 +442,7 @@ def send_admin(message):
                              reply_markup=admin_btn(), 
                              parse_mode = "Markdown", 
                              disable_web_page_preview=True)
-            
-        
-
-        
+    
 @bot.message_handler(commands=['reload'])
 def send_welcome(message):
     if not is_subscribed(CHAT_ID,message.chat.id):
