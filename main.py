@@ -3,7 +3,7 @@ from telebot.types import*
 from telebot.apihelper import ApiTelegramException
 
 
-bot = telebot.TeleBot("6262080069:AAF1Fs94pvefypcLcdgyueZx4qUNy8mvDtw")
+bot = telebot.TeleBot("5906860486:AAF9_DU9F_6Xk9tQq7rvls26HgJMzHyJJpY")
 
 CHAT_ID = '@pristbank' #replace your channel id
 admin = 'https://t.mepristlegacy'
@@ -86,7 +86,7 @@ def help_btn():
                InlineKeyboardButton("CONTINUE ➡️", callback_data="vip-menu"))
     return markup
 
-#def free_btn():
+def free_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
     markup.add(InlineKeyboardButton("BACK 🔙", callback_data="menu"),
@@ -246,16 +246,14 @@ def callback_data(call):
     if call.message:
         price_tag = "PRICE IS"
         #FREE TIPS
-        if call.data == "free":
-            mrk = types.ReplyKeyboardMarkup(resize_keyboard=True)
-            mrk.add(types.KeyboardButton('FREE TIPS'))
+        if call.data == "free1":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text="FREE MATCHES MENU", reply_markup=mrk())
-        #if call.data == "today's_tips":
-            #bot.edit_message_text(chat_id=call.message.chat.id,
-                                  #message_id=call.message.message_id,
-                                  #text=freetips_msg, reply_markup=freetips_btn())
+                                  text="FREE MATCHES MENU", reply_markup=free_btn())
+        elif call.data == "today's_tips":
+            bot.edit_message_text(chat_id=call.message.chat.id,
+                                  message_id=call.message.message_id,
+                                  text=freetips_msg, reply_markup=freetips_btn())
         elif call.data == "reload":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
@@ -344,18 +342,6 @@ def callback_data(call):
             
 
 #COMMANDS
-@bot.message_handler(func=lambda message:True)
-def send_admin(message):
-    
-    if not is_subscribed(CHAT_ID,message.chat.id):
-        # user is not subscribed. send message to the user
-        bot.send_message(message.chat.id, text=not_sub_msg
-                         , reply_markup=sub())
-    else:
-        if message.text.lower() == "today's tips":
-            bot.send_message(message.chat.id, text=freetips_msg, reply_markup=freetips_btn() 
-                              )
-
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     
