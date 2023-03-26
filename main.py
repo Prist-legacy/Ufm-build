@@ -25,14 +25,27 @@ commands = {  # command description used in the "help" command
     'admin'    : 'Get admin link. You can also type admin for quick access.'
 }
 
-freetips_msg = "free tips msg"
-freetips = "TODAY'S FREE TIPS"
+freetips_msg = "‼️Caution:\n
+
+Here at our platform, we know things are hard so we came up with the FREE TIPS department where the administrator provides you with free predictions. \nWhat does this mean, matches provided here are not 100% sure. They most times win but stake them on your own risk, losses are not on us.
+
+\nFor 100% sure matches, join our VIP GAMES or else you may proceed to see today's free matches👇"
+
+freetips = "TODAY'S FREE TIPS\n
+
+\n
+
+Stake accordingly ‼️"
 vip_msg = "VIP MSG"
 vipmenu_msg = "VIP MATCHES MENU"
 cs_msg = "CORRECT SCORE MSG"
-country_msg = "SUBSCRIBE MSG"
+country_msg = "SPECIFY YOUR COUNTY"
 admin_msg = """
-**PLEASE CONTACT**
+ADMIN CONTACT\n
+
+You be redirected to the admin's box.\n Please try to be brief and precise\n
+
+IE: Be on point because there are many people in that box.
 """
 commands_msg = "ALL COMMANDS"
 vipdes_msg = "VIP DESCRIPTION"
