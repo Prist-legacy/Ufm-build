@@ -166,7 +166,7 @@ def country_btn():
                InlineKeyboardButton("RWANDA 🇷🇼", callback_data="rw"),
                InlineKeyboardButton("TANZANIA 🇹🇿", callback_data="tz"),
                InlineKeyboardButton("USA 🇵🇷", callback_data="usa"),
-               InlineKeyboardButton("NIGERIA 🇳🇬", callback_data="ni"))
+               InlineKeyboardButton("NIGERIA 🇳🇬", callback_data="ng"))
     markup.add(InlineKeyboardButton("🔙", callback_data="cs"), 
                InlineKeyboardButton("OTHERS 🌐", callback_data="others"))
     return markup
@@ -246,7 +246,7 @@ def callback_data(call):
     if call.message:
         price_tag = "PRICE IS"
         #FREE TIPS
-        if call.data == "free1":
+        if call.data == "free":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text="FREE MATCHES MENU", reply_markup=free_btn())
