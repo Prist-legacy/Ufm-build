@@ -31,6 +31,7 @@ Here at our platform, we know things are hard so we came up with the FREE TIPS d
 
 freetips = """TODAY'S FREE TIPS\n
 
+{tip}
 \n
 
 Stake accordingly 🥤"""
@@ -269,13 +270,35 @@ def callback_data(call):
                                   message_id=call.message.message_id,
                                   text=free_msg, reply_markup=free_btn())
         elif call.data == "today's_tips":
+            tip = """
+
+            TODAY'S TIP HERE
+
+            """
+            freetips = """TODAY'S FREE TIPS\n
+
+            {tip}
+
+            \n
+
+            Stake accordingly 🥤"""
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
                                   text=freetips, reply_markup=freetips_btn())
         elif call.data == "reload":
+            freetips = """TODAY'S FREE TIPS\n
+
+            {tip}
+
+            \n
+
+            Stake accordingly 🥤"""
+            tip = """
+            TODAY'S TIP HERE
+            """
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text= "Updated \n" + freetips_msg, reply_markup=reload_btn())
+                                  text= "Updated \n" + freetips, reply_markup=reload_btn())
        #MAIN MENU     
         elif call.data == "menu":
      
