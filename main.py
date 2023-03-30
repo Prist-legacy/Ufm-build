@@ -33,7 +33,7 @@ freetips = """TODAY'S FREE TIPS\n
 
 \n
 
-Stake accordingly â€¼ï¸"""
+▫️Stake accordingly"""
 vip_msg = "VIP MSG"
 vipmenu_msg = """VIP MATCHES ARE 100% SURE GAMES.
 WINNING IS GUARANTEED. IN SHORT, THEY ARE RISK FREE MATCHES.
