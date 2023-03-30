@@ -12,7 +12,7 @@ I can help you in many things regarding to fixed games. Am smart but you can sti
 **So now can I know your need ?**
 Use below buttons for simplicity!
     """
-not_sub_msg = """Please subscribe to our main channel to use this BOT.
+not_sub_msg = """Please subscribe to our main channel 📢 to use this BOT.
 After use /reload to proceed"""
 
 helpmsg = 'THIS A HELP MESSAGE DESCRIBING ALL WAYS AND HOW TO GET ONE RICH IN BETTING. ALL COMMANDS AND SHORT CODES ARE FOUND HERE'
@@ -25,15 +25,15 @@ commands = {  # command description used in the "help" command
     'admin'    : 'Get admin link. You can also type admin for quick access.'
 }
 
-freetips_msg = """�6�0�1�5Caution:\n
+freetips_msg = """6¨0„1‚5Caution:\n
 Here at our platform, we know things are hard so we came up with the FREE TIPS department where the administrator provides you with free predictions. \nWhat does this mean, matches provided here are not 100% sure. They most times win but stake them on your own risk, losses are not on us.
-\nFor 100% sure matches, join our VIP GAMES or else you may proceed to see today's free matches�9�5"""
+\nFor 100% sure matches, join our VIP GAMES or else you may proceed to see today's free matches”9Ð5"""
 
 freetips = """TODAY'S FREE TIPS\n
 
 \n
 
-Stake accordingly ‼️"""
+Stake accordingly â€¼ï¸"""
 vip_msg = "VIP MSG"
 vipmenu_msg = """VIP MATCHES ARE 100% SURE GAMES.
 WINNING IS GUARANTEED. IN SHORT, THEY ARE RISK FREE MATCHES.
@@ -81,75 +81,75 @@ def is_subscribed(chat_id, user_id):
 def sub():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("JOIN CHANNEL 📢", url="https://t.me/pristbank"))
+    markup.add(InlineKeyboardButton("JOIN CHANNEL ðŸ“¢", url="https://t.me/pristbank"))
     return markup
 
 def commands_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("MAIN MENU 🔰", callback_data="menu"))
+    markup.add(InlineKeyboardButton("MAIN MENU ðŸ”°", callback_data="menu"))
     return markup
 
 def start_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("FREE TIPS ⛑️", callback_data="free"),
-               InlineKeyboardButton("VIP MATCHES 💯", callback_data="vip-menu"))
+    markup.add(InlineKeyboardButton("FREE TIPS â›‘ï¸", callback_data="free"),
+               InlineKeyboardButton("VIP MATCHES ðŸ’¯", callback_data="vip-menu"))
     return markup
 
 def help_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("MAIN MENU 🔰", callback_data="menu"),
-               InlineKeyboardButton("CONTINUE ➡️", callback_data="vip-menu"))
+    markup.add(InlineKeyboardButton("MAIN MENU ðŸ”°", callback_data="menu"),
+               InlineKeyboardButton("CONTINUE âž¡ï¸", callback_data="vip-menu"))
     return markup
 
 def free_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("BACK 🔙", callback_data="menu"),
-               InlineKeyboardButton("TODAYS TIPS ⛑️", callback_data="today's_tips"))
+    markup.add(InlineKeyboardButton("BACK ðŸ”™", callback_data="menu"),
+               InlineKeyboardButton("TODAYS TIPS â›‘ï¸", callback_data="today's_tips"))
     return markup
 
 def today_tips_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("MAIN MENU 🔰", callback_data="menu"),)
+    markup.add(InlineKeyboardButton("MAIN MENU ðŸ”°", callback_data="menu"),)
     #put reply keyboard (generate booking kode)
     return markup
 
 def freetips_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("RELOAD TIP 🔃", callback_data="reload"),
-               InlineKeyboardButton("💯 SURE ODDS", callback_data="vip-menu"))
+    markup.add(InlineKeyboardButton("RELOAD TIP ðŸ”ƒ", callback_data="reload"),
+               InlineKeyboardButton("ðŸ’¯ SURE ODDS", callback_data="vip-menu"))
     return markup
 def reload_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("BACK 🔙", callback_data="menu"),
-               InlineKeyboardButton("💯 SURE ODDS", callback_data="vip-menu"))
+    markup.add(InlineKeyboardButton("BACK ðŸ”™", callback_data="menu"),
+               InlineKeyboardButton("ðŸ’¯ SURE ODDS", callback_data="vip-menu"))
     return markup
 #VIP-SECTION
 def vipmenu_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("TODAY'S GAMES ✄1�7", callback_data="vip"),
-               InlineKeyboardButton("HOW IT WORKS ⁉️", callback_data="how"))
+    markup.add(InlineKeyboardButton("TODAY'S GAMES âœ„1¤7", callback_data="vip"),
+               InlineKeyboardButton("HOW IT WORKS â‰ï¸", callback_data="how"))
     return markup
 
 def how_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("JOIN VIP NOW 💰", callback_data="vip-menu"),
-               InlineKeyboardButton("ASK MORE 🤵", callback_data="admin"))
+    markup.add(InlineKeyboardButton("JOIN VIP NOW ðŸ’°", callback_data="vip-menu"),
+               InlineKeyboardButton("ASK MORE ðŸ¤µ", callback_data="admin"))
     return markup
 #reply keyboard for admin
 def admin_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("ADMIN 🕴︄1�7", url='https://t.me/pristlegacy'))
-    markup.add(InlineKeyboardButton("MAIN MENU 🔰", callback_data="menu"))
+    markup.add(InlineKeyboardButton("ADMIN ðŸ•´ï¸„1¤7", url='https://t.me/pristlegacy'))
+    markup.add(InlineKeyboardButton("MAIN MENU ðŸ”°", callback_data="menu"))
     return markup
 
 def vip_btn():
@@ -162,15 +162,15 @@ def vip_btn():
 def htft_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("BACK 🔙", callback_data="vip"))
+    markup.add(InlineKeyboardButton("BACK ðŸ”™", callback_data="vip"))
     return markup
 
 def cs_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("BUY MATCHES NOW 💰", callback_data="subscribe"))
-    markup.add(InlineKeyboardButton("BACK 🔙", callback_data="vip"),
-               InlineKeyboardButton("MAIN MENU 🔰", callback_data="menu"))
+    markup.add(InlineKeyboardButton("BUY MATCHES NOW ðŸ’°", callback_data="subscribe"))
+    markup.add(InlineKeyboardButton("BACK ðŸ”™", callback_data="vip"),
+               InlineKeyboardButton("MAIN MENU ðŸ”°", callback_data="menu"))
     
     return markup
 
@@ -178,15 +178,15 @@ def cs_btn():
 def country_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("UGANDA 🇺🇬", callback_data="ug"),
-               InlineKeyboardButton("KENYA 🇰🇪", callback_data="ke"),
-               InlineKeyboardButton("GHANA 🇬🇭", callback_data="gh"),
-               InlineKeyboardButton("RWANDA 🇷🇼", callback_data="rw"),
-               InlineKeyboardButton("TANZANIA 🇹🇿", callback_data="tz"),
-               InlineKeyboardButton("USA 🇵🇷", callback_data="usa"),
-               InlineKeyboardButton("NIGERIA 🇳🇬", callback_data="ng"))
-    markup.add(InlineKeyboardButton("🔙", callback_data="cs"), 
-               InlineKeyboardButton("OTHERS 🌐", callback_data="others"))
+    markup.add(InlineKeyboardButton("UGANDA ðŸ‡ºðŸ‡¬", callback_data="ug"),
+               InlineKeyboardButton("KENYA ðŸ‡°ðŸ‡ª", callback_data="ke"),
+               InlineKeyboardButton("GHANA ðŸ‡¬ðŸ‡­", callback_data="gh"),
+               InlineKeyboardButton("RWANDA ðŸ‡·ðŸ‡¼", callback_data="rw"),
+               InlineKeyboardButton("TANZANIA ðŸ‡¹ðŸ‡¿", callback_data="tz"),
+               InlineKeyboardButton("USA ðŸ‡µðŸ‡·", callback_data="usa"),
+               InlineKeyboardButton("NIGERIA ðŸ‡³ðŸ‡¬", callback_data="ng"))
+    markup.add(InlineKeyboardButton("ðŸ”™", callback_data="cs"), 
+               InlineKeyboardButton("OTHERS ðŸŒ", callback_data="others"))
     return markup
 
 
@@ -195,63 +195,63 @@ def ug_btn():
     markup.row_width = 2
     markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
                InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
-    markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
+    markup.add(InlineKeyboardButton("NOT SURE â‰ï¸", callback_data="vip_des"))
     return markup
 def ke_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
     markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
                InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
-    markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
+    markup.add(InlineKeyboardButton("NOT SURE â‰ï¸", callback_data="vip_des"))
     return markup
 def gh_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
     markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
                InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
-    markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
+    markup.add(InlineKeyboardButton("NOT SURE â‰ï¸", callback_data="vip_des"))
     return markup
 def rw_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
     markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
                InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
-    markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
+    markup.add(InlineKeyboardButton("NOT SURE â‰ï¸", callback_data="vip_des"))
     return markup
 def tz_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
     markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
                InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
-    markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
+    markup.add(InlineKeyboardButton("NOT SURE â‰ï¸", callback_data="vip_des"))
     return markup
 def usa_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
     markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
                InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
-    markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
+    markup.add(InlineKeyboardButton("NOT SURE â‰ï¸", callback_data="vip_des"))
     return markup
 def ng_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
     markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
                InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
-    markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
+    markup.add(InlineKeyboardButton("NOT SURE â‰ï¸", callback_data="vip_des"))
     return markup
 def others_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("BACK 🔙", callback_data="country"),
+    markup.add(InlineKeyboardButton("BACK ðŸ”™", callback_data="country"),
                InlineKeyboardButton("TALK TO ADMIN", callback_data="admin"))
-    markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
+    markup.add(InlineKeyboardButton("NOT SURE â‰ï¸", callback_data="vip_des"))
     return markup
 
 
 def vipdes_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("BACK 🔙", callback_data="country"))
+    markup.add(InlineKeyboardButton("BACK ðŸ”™", callback_data="country"))
     return markup
 
 #MODE OF PAYMENTS
