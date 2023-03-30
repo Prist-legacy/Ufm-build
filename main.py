@@ -25,7 +25,7 @@ commands = {  # command description used in the "help" command
     'admin'    : 'Get admin link. You can also type admin for quick access.'
 }
 
-freetips_msg = """6¨0„1‚5Caution:\n
+free_msg = """‼️<b>Caution:<b>\n
 Here at our platform, we know things are hard so we came up with the FREE TIPS department where the administrator provides you with free predictions. \nWhat does this mean, matches provided here are not 100% sure. They most times win but stake them on your own risk, losses are not on us.
 \nFor 100% sure matches, join our VIP GAMES or else you may proceed to see today's free matches”9Ð5"""
 
@@ -267,11 +267,11 @@ def callback_data(call):
         if call.data == "free":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text="FREE MATCHES MENU", reply_markup=free_btn())
+                                  text=free_msg, reply_markup=free_btn())
         elif call.data == "today's_tips":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text=freetips_msg, reply_markup=freetips_btn())
+                                  text=freetips, reply_markup=freetips_btn())
         elif call.data == "reload":
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
