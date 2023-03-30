@@ -95,7 +95,7 @@ def start_btn():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
     markup.add(InlineKeyboardButton("▫️FREE TIPS", callback_data="free"),
-               InlineKeyboardButton("🔹VIP MATCHES ðŸ’¯", callback_data="vip-menu"))
+               InlineKeyboardButton("🔹VIP MATCHES", callback_data="vip-menu"))
     return markup
 
 def help_btn():
