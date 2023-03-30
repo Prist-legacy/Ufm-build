@@ -275,7 +275,7 @@ def callback_data(call):
             TODAY'S TIP HERE
 
             """
-            freetips = """TODAY'S FREE TIPS\n
+            freetips = f"""TODAY'S FREE TIPS\n
 
             {tip}
 
@@ -286,7 +286,7 @@ def callback_data(call):
                                   message_id=call.message.message_id,
                                   text=freetips, reply_markup=freetips_btn())
         elif call.data == "reload":
-            freetips = """TODAY'S FREE TIPS\n
+            freetips = f"""TODAY'S FREE TIPS\n
 
             {tip}
 
