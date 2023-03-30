@@ -27,14 +27,9 @@ commands = {  # command description used in the "help" command
 
 free_msg = """‼️Caution:\n
 Here at our platform, we know things are hard so we came up with the FREE TIPS department where the administrator provides you with free predictions. \nWhat does this mean, matches provided here are not 100% sure. They most times win but stake them on your own risk, losses are not on us.
-\nFor 100% sure matches, join our VIP GAMES or else you may proceed to see today's free matches”9Ð5"""
+\nFor 100% sure matches, join our VIP GAMES or else you may proceed to see today's free matches👇"""
 
-freetips = """TODAY'S FREE TIPS\n
 
-{tip}
-\n
-
-Stake accordingly 🥤"""
 vip_msg = "VIP MSG"
 vipmenu_msg = """VIP MATCHES ARE 100% SURE GAMES.
 WINNING IS GUARANTEED. IN SHORT, THEY ARE RISK FREE MATCHES.
