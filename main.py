@@ -212,7 +212,7 @@ def rw_btn():
     markup.row_width = 2
     markup.add(InlineKeyboardButton("JOIN VIP", callback_data="join_vip"),
                InlineKeyboardButton("JOIN VVIP", callback_data="join_vvip"))
-    markup.add(InlineKeyboardButton("NOT SURE â‰ï¸", callback_data="vip_des"))
+    markup.add(InlineKeyboardButton("NOT SURE ⁉️", callback_data="vip_des"))
     return markup
 def tz_btn():
     markup = InlineKeyboardMarkup()
@@ -293,7 +293,7 @@ def callback_data(call):
             """
             bot.edit_message_text(chat_id=call.message.chat.id,
                                   message_id=call.message.message_id,
-                                  text= "Updated \n" + freetips, reply_markup=reload_btn())
+                                  text= f"Updated \n" + freetips, reply_markup=reload_btn())
        #MAIN MENU     
         elif call.data == "menu":
      
