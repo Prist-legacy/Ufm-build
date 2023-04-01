@@ -7,6 +7,7 @@ bot = telebot.TeleBot("5906860486:AAF9_DU9F_6Xk9tQq7rvls26HgJMzHyJJpY")
 
 CHAT_ID = '@pristbank' #replace your channel id
 admin = 'https://t.mepristlegacy'
+force_channel = "pristbank"
 startmsg = """
 I can help you in many things regarding to fixed games. Am smart but you can still contact the **UFM administration** for farther help.
 **So now can I know your need ?**
@@ -77,7 +78,7 @@ def is_subscribed(chat_id, user_id):
 def sub():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("JOIN CHANNEL 📢", url="https://t.me/pristbank"))
+    markup.add(InlineKeyboardButton("JOIN CHANNEL 📢", url=f"https://t.me/+{force_channel}"))
     return markup
 
 def commands_btn():
