@@ -48,7 +48,7 @@ def main_btn():
 def sub():
     markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("JOIN CHANNEL 📢", url=f"https://t.me/+{force_channel}"))
+    markup.add(InlineKeyboardButton("JOIN CHANNEL 📢", url=f"https://t.me/{force_channel}"))
     return markup
 
 def commands_btn():
